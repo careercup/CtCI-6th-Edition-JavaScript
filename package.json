@@ -2,12 +2,16 @@
   "name": "CrackingJS",
   "version": "0.0.1",
   "description": "Data Structures and Algorithms in Javascript",
+  "scripts": {
+    "lint": "eslint lib/**/*.js test/**/*.js",
+    "test": "npm run lint && mocha --recursive"
+  },
   "dependencies": {
-    "mocha": "*",
     "chai": "*",
+    "eslint": "^2.2.0",
+    "mocha": "*",
     "require-directory": "*",
     "sinon": "*"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
