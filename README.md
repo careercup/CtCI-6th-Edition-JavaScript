@@ -1,22 +1,23 @@
-####Run the code and test
-This project uses Mocha and Chai for testing:
+# Cracking the Coding Interview 6th Edition - JavaScript
 
 <br>
-#####Install dependencies:
+
+## Install dependencies:
 ```bash
 npm install
-npm install -g mocha
-npm install -g chai
 ```
 
 <br>
-#####Run tests:
+
+## Test
+
 ```bash
-mocha --recursive
+npm test
+```
+
+If you just want to lint  
+```bash
+npm run lint
 ```
 
 <br>
-#####Add new npm modules:
-```bash
-npm install --save <package name>
-```
