@@ -1,5 +1,5 @@
 require('../../test_helper');
-describe('1.9 #isRotation', function () {
+describe('1.8 #isRotation', function () {
   var str1, str2;
   beforeEach(function () {
     str1 = 'waterbottle';
