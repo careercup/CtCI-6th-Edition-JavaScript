@@ -14,10 +14,8 @@ describe('2.3 #FindMiddle', function () {
     });
 
     it('should return the middle node', function () {
-      var middleNode = sll.findMiddle(sll.head);
-      expect(middleNode).not.be.null;
-      expect(middleNode).to.have.property('data');
-      expect(middleNode.data).be.equal('3Node');
+      sll.findMiddleAndRemove(sll.head);
+      expect(sll).length.to.be(4);
     });
   });
 });
