@@ -16,7 +16,7 @@
 - [ ] 1.9 - String Rotation
 
 #### Chapter 2
-- [x] 2.3 - [Find Middle Node](lib/data-structures/chapter-2/2_3.js)
+- [x] 2.3 - [Delete Middle Node](lib/data-structures/chapter-2/2_3.js)
 
 #### Chapter 3
 - [ ] 3.1 - Three in One
