@@ -5,11 +5,9 @@ describe('2.3 #FindMiddle', function () {
     var sll;
     beforeEach(function() {
       sll = new MyLinkedList();
-      sll.addNode('1Node');
-      sll.addNode('2Node');
-      sll.addNode('3Node');
-      sll.addNode('4Node');
-      sll.addNode('5Node');
+      for(var i=1; i < 6; i++) {
+        sll.addNode( i + 'Node');
+      }
     });
 
     afterEach(function() {
@@ -29,6 +27,6 @@ describe('2.3 #FindMiddle', function () {
       sll.removeMiddleNode(sll.head.next.next);
       expect(sll).length.to.be(4);
     });
-    
+
   });
 });
