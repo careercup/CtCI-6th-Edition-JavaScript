@@ -6,7 +6,7 @@ describe('2.2 #nthToLast', function () {
     beforeEach(function() {
       sll = new MyLinkedList();
       for(var i=1; i < 6; i++) {
-        sll.addNode( i + 'Node');
+        sll.addNode( i + 'Node', null);
       }
     });
 
