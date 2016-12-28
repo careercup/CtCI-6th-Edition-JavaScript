@@ -4,7 +4,7 @@ function runTest(methodName) {
   var str1, str2;
   beforeEach(function () {
     str1 = 'abcdef';
-    str2 = 'qwertyuiopasdfghjkl;zxcvbnm,.';
+    str2 = 'qwertyuiopasdfghjkl;\'zxcvbnm,.';
     str3 = 'abcdefa';
   });
   it('returns true if string is all unique chars', function () {
