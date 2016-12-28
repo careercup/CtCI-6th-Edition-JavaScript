@@ -4,7 +4,7 @@
 
 ## Question List:
 
-#### Chapter 1 
+#### Chapter 1
 - [x] 1.1 - [Is Unique](lib/data-structures/chapter-1/1_1.js)
 - [x] 1.2 - [Check Permutation](lib/data-structures/chapter-1/1_2.js)
 - [x] 1.3 - [URLify](lib/data-structures/chapter-1/1_3.js)
@@ -13,7 +13,13 @@
 - [x] 1.6 - [String Compression](lib/data-structures/chapter-1/1_6.js)
 - [x] 1.7 - [Rotate Matrix](lib/data-structures/chapter-1/1_7.js)
 - [x] 1.8 - [Zero Matrix](lib/data-structures/chapter-1/1_8.js)
-- [ ] 1.9 - String Rotation 
+- [ ] 1.9 - String Rotation
+
+#### Chapter 2
+- [x] 2.2 - [Return Kth to Last](lib/data-structures/chapter-2/2_2.js)
+- [x] 2.3 - [Delete Middle Node](lib/data-structures/chapter-2/2_3.js)
+- [x] 2.8 - [Detection Loop](lib/data-structures/chapter-2/2_8.js)
+
 
 #### Chapter 3
 - [ ] 3.1 - Three in One
@@ -38,7 +44,7 @@ npm install
 npm test
 ```
 
-If you just want to lint  
+If you just want to lint
 ```bash
 npm run lint
 ```
