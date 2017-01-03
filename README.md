@@ -19,6 +19,7 @@
 - [x] 2.1 - [Remove Duplicate](lib/data-structures/chapter-2/2_1.js)
 - [x] 2.2 - [Return Kth to Last](lib/data-structures/chapter-2/2_2.js)
 - [x] 2.3 - [Delete Middle Node](lib/data-structures/chapter-2/2_3.js)
+- [x] 2.6 - [Check if Linkedlist is Palindrome](lib/data-structures/chapter-2/2_6.js)
 - [x] 2.8 - [Detection Loop](lib/data-structures/chapter-2/2_8.js)
 
 

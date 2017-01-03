@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - '4.4.3'
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-4.8
+      - g++-4.8
+env:
+  - CXX=g++-4.8 NODE_ENV=test
+sudo: required
+before_script: npm i
+after_success: 
+script:
+  - npm test
+  - npm run lint
