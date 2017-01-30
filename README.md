@@ -2,7 +2,7 @@
 
 ## Instructions
 
-- This repository contains JavaScript attempts on questions listed in the book.
+- This repository contains JavaScript attempts on questions listed in the book. So far, code or short writeups are available for the first 10 chapters.
 
 - At Gayle's request, the files only contain code, and do not contain the actual questions. For the questions, please support Gayle by purchasing the [book](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850).
 
