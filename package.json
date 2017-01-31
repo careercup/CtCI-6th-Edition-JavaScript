@@ -2,10 +2,12 @@
   "name": "CtCI",
   "version": "0.0.1",
   "description": "Cracking the Coding Interview - Answers in Javascript",
-  "scripts": {},
-  "dependencies": {
-    "eslint": "^3.14.1"
+  "scripts": {
+    "test": "eslint ."
   },
-  "devDependencies": {},
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^3.14.1"    
+  },
   "license": "MIT"
 }
