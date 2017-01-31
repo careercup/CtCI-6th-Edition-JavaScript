@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "description": "Cracking the Coding Interview - Answers in Javascript",
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+    "eslint": "^3.14.1"
+  },
   "devDependencies": {},
-  "author": "Tony K Tan",
-  "license": "ISC"
+  "license": "MIT"
 }
