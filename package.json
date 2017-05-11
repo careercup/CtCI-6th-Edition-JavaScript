@@ -1,17 +1,13 @@
 {
-  "name": "CrackingJS",
-  "version": "0.0.2",
-  "description": "Data Structures and Algorithms in Javascript",
+  "name": "CtCI",
+  "version": "0.0.1",
+  "description": "Cracking the Coding Interview - Answers in Javascript",
   "scripts": {
-    "lint": "eslint lib/**/*.js test/**/*.js",
-    "test": "npm run lint && mocha --recursive"
+    "test": "eslint ."
   },
-  "dependencies": {
-    "chai": "*",
-    "eslint": "^2.2.0",
-    "mocha": "*",
-    "require-directory": "*",
-    "sinon": "*"
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^3.14.1"    
   },
-  "devDependencies": {}
+  "license": "MIT"
 }
