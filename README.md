@@ -8,11 +8,9 @@
 
 - At Gayle's request, the files only contain code, and do not contain the actual questions. For the questions, please support Gayle by purchasing the [book](https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850).
 
-- Under each JavaScript file, there are tests to check that the code is working as expected. For convinience, simple logging is used to test the functions. To run the tests, just cd into the folder containing the .js file and run `node <fileName>.js` to run the tests.
+- Under each JavaScript file, there are tests to check that the code is working as expected. For convenience, simple logging is used to test the functions. To run the tests, just cd into the folder containing the .js file and run `node <fileName>.js` to run the tests.
 
-- The code could use more tests and optimization, as well as time/space complexity analysis for each question.
-
-- If you see any improvements to be made to the code, please feel free to amend and send me a pull request.
+- Contributions welcome
 
 ## List of Coding Questions:
 
@@ -133,3 +131,12 @@
 - [x] 10.9 - Sorted Matrix Search
 - [x] 10.10 - Rank From Stream
 - [x] 10.11 - Peaks And Valleys
+
+<br>
+
+## Test
+
+```sh
+npm test
+```
+
