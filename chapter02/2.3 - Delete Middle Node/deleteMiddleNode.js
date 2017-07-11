@@ -1,48 +1,39 @@
-var LinkedList = function(value) {
-  this.value = value;
-  this.next = null;
-};
-
-var deleteMidNode = function(midNode) {
-  var node = midNode;
-  while (node !== null && node.next !== null) {
-    node.value = node.next.value;
-    if (node.next.next === null) {
-      node.next = null;
-    } 
-    node = node.next;
+//delete node in the middle of linked list
+class linkedList {
+  constructor(data) {
+    this.data = data
+    this.next = null
   }
-};
+}
 
-// a -> b -> c -> d -> e -> f, input c
-// a -> b -> *d -> d -> e -> f
-// a -> b -> d -> *e -> e -> f
-// a -> b -> d -> e -> *f -> f
-// a -> b -> d -> e -> f -> *null
+const deleteNode = (nodeDel) => {
+  nodeDel.data = nodeDel.next.data
+  nodeDel.next = nodeDel.next.next
+  //delete next node from emmory
 
-/* TEST */
+}
 
-var printList = function(head) {
-  while(head !== null) {
-    console.log(head.value);
-    head = head.next;
+
+const printList = (headNode) => {
+  let current = headNode;
+  while(current != null) {
+    console.log(current.data)
+    current = current.next
   }
-  console.log('done printing');
-};
+}
 
-var a = new LinkedList('a');
-var b = new LinkedList('b');
-var c = new LinkedList('c');
-var d = new LinkedList('d');
-var e = new LinkedList('e');
-var f = new LinkedList('f');
+// create new LL nodes
+let a = new linkedList('1');
+let b = new linkedList('2');
+let c = new linkedList('3');
+let d = new linkedList('4');
+let e = new linkedList('5');
 
-a.next = b;
-b.next = c;
-c.next = d;
-d.next = e;
-e.next = f;
+//link nodes
+a.next = b
+b.next = c
+c.next = d
+d.next = e
 
-printList(a);
-deleteMidNode(c);
-printList(a);
+deleteNode(d, a)
+printList(a)
