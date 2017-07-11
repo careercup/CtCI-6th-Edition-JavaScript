@@ -18,7 +18,8 @@ stackMin.prototype.push = function(value) {
 stackMin.prototype.pop = function() {
   var answer = this.stack.pop();
   if (answer === this.currMin) {
-    this.currMin = this.minStack.pop();
+    this.minStack.pop();
+    this.currMin = this.minStack.peek();
   }
   return answer;
 };
