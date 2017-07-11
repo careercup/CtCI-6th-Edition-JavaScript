@@ -45,7 +45,8 @@ class SinglyLinkedList {
   }
 
   removeDups() {
-
+    //make hash map while looping through list
+    let current = this.head;
     //start at head loop through until reach null tail
     while(current != null) {
       let runner = current
