@@ -1,82 +1,75 @@
-/* CLASS */
-var LinkedList = function(value) {
-  this.value = value;
-  this.next = null;
-};
+//O(n2) time & O(1) space with no buffer
 
-/* FUNCTIONS */
-var checkDups = function(head, node) {
-  var currNode = head;
-  while (currNode !== node) {
-    if (currNode.value === node.value) {
-      return true;
-    }
-    currNode = currNode.next;
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
   }
-  return false;
-};
+}
 
-var printLinkedList = function(head) {
-  var node = head;
-  console.log('start of linked list');
-  while (node !== null) {
-    console.log(node.value);
-    node = node.next;
+class SinglyLinkedList {
+  constructor() {
+    this.head = null;
+    this.length = 0;
   }
-  console.log('end of linked list');
-};
 
-var removeDups = function(head) {
-  var node = head;
-  while (node !== null) {
-    if (node.next !== null && checkDups(head, node.next)) {
-      node.next = node.next.next;
+  appendToTail(data) {
+    let node = new Node(data);
+    //if empty, set new node to head
+    if (this.length === 0) {
+      this.head = node
     } else {
-      node = node.next;
+      //start at head and go through until reach null tail
+      let current = this.head;
+      while(current.next != null) {
+        current = current.next
+      }
+      current.next = node;
+    }
+    this.length++;
+  }
+
+  printList() {
+    //if empty list
+    if (this.length === 0) {
+      console.log('List Empty')
+    } else {
+      //first print head data, then loop through print until null tail
+      let current = this.head;
+      console.log(current.data)
+      while(current.next != null) {
+        console.log(current.next.data)
+        current = current.next
+      }
     }
   }
-  return head;
-};
 
-/* TESTS */
-var a = new LinkedList('a');
-var b = new LinkedList('b');
-var c = new LinkedList('c');
-var d = new LinkedList('d');
-var e = new LinkedList('e');
+  removeDups() {
 
-a.next = b;
-b.next = c;
-c.next = d;
-d.next = e;
+    //start at head loop through until reach null tail
+    while(current != null) {
+      let runner = current
+      //make another runner pointer
+      while(runner.next != null) {
+        if (current.data === runner.next.data) {
+          runner.next = runner.next.next;
+          this.length--;
+        } else {
+          runner = runner.next;
+        }
+      }
+      current = current.next
+    }
+  }
+}
 
-removeDups(a);
-printLinkedList(a);
-
-var f = new LinkedList('f');
-var g = new LinkedList('g');
-var h = new LinkedList('g');
-var i = new LinkedList('g');
-var j = new LinkedList('g');
-
-f.next = g;
-g.next = h;
-h.next = i;
-i.next = j;
-
-removeDups(f);
-printLinkedList(f);
-
-var k = new LinkedList('g');
-var l = new LinkedList('g');
-var m = new LinkedList('g');
-var n = new LinkedList('b');
-var o = new LinkedList('g');
-
-k.next = l;
-l.next = m;
-m.next = n;
-n.next = o;
-
-removeDups(k);
-printLinkedList(k);
+let linkyList = new SinglyLinkedList();
+linkyList.appendToTail('a');
+linkyList.appendToTail('p');
+linkyList.appendToTail('p');
+linkyList.appendToTail('l');
+linkyList.appendToTail('e');
+linkyList.printList();
+console.log('Remove Duplicates')
+linkyList.removeDups();
+linkyList.printList();
