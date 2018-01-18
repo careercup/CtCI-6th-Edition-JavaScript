@@ -1,6 +1,6 @@
 var urlify = function(str, length) {
   // have a pointer to check from start to end
-  var strArr = str.split('');
+  var strArr = str.trim().split('');
   var pointer = 0;
   while (pointer < str.length) {
     if (strArr[pointer] === ' ') {
