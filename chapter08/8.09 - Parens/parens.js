@@ -1,25 +1,18 @@
 var parens = function(n) {
  var answers = [];
-  var recurse = function(currParens, remainingPairs) {
-    if (remainingPairs === 0) {
-      answers.push(currParens);
-    } else {
-      var used = {};
-      if (!used[`(${currParens})`]) {
-        used[`(${currParens})`] = true;
-        recurse(`(${currParens})`, remainingPairs - 1);
-      }
-      if (!used[`()${currParens}`]) {
-        used[`()${currParens}`] = true;
-        recurse(`()${currParens}`, remainingPairs - 1); 
-      }
-      if (!used[`${currParens}()`]) {
-        used[`${currParens}()`] = true;
-        recurse(`${currParens}()`, remainingPairs - 1);      
-      }
-    }
+  var recurse = function(n, m=0, currStr='') {
+	if (n===0 && m===0) {
+		answers.push(currStr);
+	}
+	else if (n!==0) {
+		recurse(n-1, m+1, currStr + '(');
+		
+		if (m>0) {
+			recurse(n-1, m-1, currStr + ')');
+		}
+	}
   };
-  recurse('', n);
+  recurse(n*2);
   return answers;
 };
 
