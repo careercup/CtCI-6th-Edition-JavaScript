@@ -1,4 +1,5 @@
 var allUniqueChars = function(string) {
+  if (string.length > 128) returne false;
   
   // O(n^2) approach, no additional data structures used
   // for each character, check remaining characters for duplicates
