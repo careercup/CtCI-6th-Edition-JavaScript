@@ -1,15 +1,18 @@
 const LinkedList = require('./../util/LinkedList')
 const printList = require('./../util/printList')
 
-function sumLinkedLists(node1,node2,carry=0){
-  if(!node1&&!node2&&carry===0){
+function sumLinkedLists(node1, node2, carry=0){
+  if(!node1 && !node2 && carry===0){
     return null
   }
   let value = carry
   value += node1 ? node1.value : 0
   value += node2 ? node2.value : 0
   const node  = new LinkedList(value%10)
-  node.next = sumLinkedLists(node1?node1.next:null,node2 ? node2.next:null,value > 10 ? 1: 0)
+  node.next = sumLinkedLists(
+    node1 ? node1.next : null,
+    node2 ? node2.next : null,
+    value > 10 ? 1 : 0)
   return node
 }
 
