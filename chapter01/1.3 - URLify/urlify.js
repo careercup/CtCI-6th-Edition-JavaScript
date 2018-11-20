@@ -13,7 +13,7 @@ var urlify = function(str, length) {
       strArr[pointer+1] = '2';
       strArr[pointer+2] = '0';
       console.log(strArr, strArr.length);
-    } 
+    }
     pointer++;
   }
   // if character is a space, move remainder chars by two
@@ -21,4 +21,18 @@ var urlify = function(str, length) {
   return strArr.join('');
 };
 
-console.log(urlify('Mr John Smith    ', 13), 'Mr%20John%20Smith');
+function URLify2(str, len) {
+    let i = 0, newStr = '';
+
+    while(i<len) {
+        if(str[i] === ' ') {
+            newStr += '%20';
+        } else {
+            newStr += str[i];
+        }
+        i++;
+    }
+
+    return newStr;
+}
+console.log(URLify2('Mr John Smith    ', 13), 'Mr%20John%20Smith');
