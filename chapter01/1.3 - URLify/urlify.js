@@ -22,3 +22,20 @@ var urlify = function(str, length) {
 };
 
 console.log(urlify('Mr John Smith    ', 13), 'Mr%20John%20Smith');
+
+// ONE MORE SOLUTION
+
+function urlify(string, length) {
+  var arr = string.split('');
+  for ( char of arr ) {
+    if ( char === ' ') {
+      //replacing ' ' with '%20' 
+      var update = arr.splice(arr.indexOf(char), 1, '%20');
+    }
+  }
+  if (string.length !== length) {
+    var remove = (string.length - length);
+    arr.splice ( - 1 * remove);
+  }
+  return arr.join('');
+}
