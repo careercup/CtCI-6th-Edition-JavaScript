@@ -65,7 +65,6 @@ console.log(oneAway('pale', 'bake'), false);
 
 
 //Another solution 
-
 function oneAway(str1, str2) {
   var counter = 0;
   for (var i = 0; i < str1.length; i++) {
