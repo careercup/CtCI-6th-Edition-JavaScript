@@ -32,3 +32,20 @@ var palinPerm = function(string) {
 // TESTS
 console.log(palinPerm('Tact Coa'), 'true');
 console.log(palinPerm('Tact boa'), 'false');
+
+//another solution
+
+function palindrom(string) {
+  var test = [];
+  var arr = string.split('');
+  for (char of arr) {
+    if (char !== ' ') {
+      test.push(char.toLowerCase());
+    }
+  }
+  if (test.join('') === test.reverse().join('')) {
+    return true;
+  } else {
+    return false;
+  }
+}
