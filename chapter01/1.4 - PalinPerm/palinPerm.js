@@ -33,7 +33,7 @@ var palinPerm = function(string) {
 console.log(palinPerm('Tact Coa'), 'true');
 console.log(palinPerm('Tact boa'), 'false');
 
-//another solution
+//Another solution
 
 function palindrom(string) {
   var test = [];
