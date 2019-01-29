@@ -1,24 +1,22 @@
-var urlify = function(str, length) {
-  // have a pointer to check from start to end
-  var strArr = str.split('');
-  var pointer = 0;
-  while (pointer < str.length) {
-    if (strArr[pointer] === ' ') {
-      // *** needs more work here, a little wierd
-      // not handling trailing spaces properly
-      for (var i = str.length - 1; i > pointer + 3; i--) {
-        strArr[i] = str[i - 2];
-      }
-      strArr[pointer] = '%';
-      strArr[pointer+1] = '2';
-      strArr[pointer+2] = '0';
-      console.log(strArr, strArr.length);
-    } 
-    pointer++;
+//O(N)
+
+var urlify = function(str, trueLength) {
+  str = str.split("") //split string to array, as JS strings are immutable
+  index = str.length
+  for (i = trueLength-1; i>=0; i--){
+    if(str[i] === ' '){
+      str[index-1] = '0'
+      str[index-2] = '2'
+      str[index-3] = '%'
+      index = index-3
+    }
+    else{
+        str[index-1] = str[i]
+        index = index-1
+    }
   }
-  // if character is a space, move remainder chars by two
-  // replace following three chars with '%20'
-  return strArr.join('');
+  return str.join("") //join character array back into a string
 };
 
 console.log(urlify('Mr John Smith    ', 13), 'Mr%20John%20Smith');
+console.log(urlify('much ado about nothing      ', 22), 'much%20ado%20about%20nothing')
