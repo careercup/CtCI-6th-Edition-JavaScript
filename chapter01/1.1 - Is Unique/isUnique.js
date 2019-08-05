@@ -12,5 +12,19 @@ var allUniqueChars = function(string) {
   return true; // if no match, return true
 };
 
+const everyCharUnique = (str, indexOffset = 'a'.charCodeAt()) => {
+    let counterTable = Number();
+    for(let index of [...str].map(c => c.charCodeAt() - indexOffset)) {
+        const mask = 1 << index;
+        if(counterTable & mask)
+            return false;
+        counterTable |= mask;
+    }
+    return true;
+};
+
 /* TESTS */
-// log some tests here
+console.log(everyCharUnique('abcd'), 'true');
+console.log(everyCharUnique('abccd'), 'false');
+console.log(everyCharUnique('bhjjb'), 'false');
+console.log(everyCharUnique('mdjq'), 'true');
