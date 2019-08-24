@@ -1,5 +1,5 @@
 const replaceUrlSpaces = (str) => {
-  const convertToArray = str.split('');
+  const convertToArray = str.trim().split('');
   for(let i in convertToArray) {
     if(convertToArray[i] === " ") {
      convertToArray[i] = "%20"
