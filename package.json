@@ -7,7 +7,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "eslint": "^3.14.1"    
+    "eslint": "^6.6.0"    
   },
   "license": "MIT"
 }
