@@ -40,7 +40,7 @@ var partition = function(head, partition) {
 
 /* TESTS */
 // Input: 3 -> 5 -> 8 -> 5 -> 10 -> 2 -> 1 [partition = 5]
-// Output: 3 -> 1 -> 2 -> 10 -> 5 -> 5 -> 8
+// Output: 3 -> 2 -> 1 -> 5 -> 8 -> 5 -> 10
 
 var printList = function(a) {
   while (a !== null) {
