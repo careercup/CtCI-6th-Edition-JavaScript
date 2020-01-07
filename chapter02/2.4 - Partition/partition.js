@@ -8,8 +8,10 @@ var partition = function(head, partition) {
   // and attach nodes with values less than partition value to the left
   // and nodes with vallues more than partition value to the right
   var left;
+  var middle;
   var right;
   var currLeft = null;
+  var currMiddle = null;
   var currRight = null;
 
   var node = head;
@@ -21,6 +23,14 @@ var partition = function(head, partition) {
       } else {
         currLeft.next = node;
         currLeft = currLeft.next;
+      }
+    } else if (node.value === partition) {
+      if (currMiddle === null) {
+        middle = node;
+        currMiddle = middle;
+      } else {
+        currMiddle.next = node;
+        currMiddle = currMiddle.next;
       }
     } else {
       if (currRight === null) {
@@ -34,13 +44,16 @@ var partition = function(head, partition) {
     node = node.next;
   }
   currRight.next = null;
-  currLeft.next = right; // connect two partitions together
+  // connect the left values with those matching the partition value
+  currLeft.next = middle;
+  // connect the middle with the right partitions
+  currMiddle.next = right;
   return left; // return head of new linkedList
 };
 
 /* TESTS */
 // Input: 3 -> 5 -> 8 -> 5 -> 10 -> 2 -> 1 [partition = 5]
-// Output: 3 -> 2 -> 1 -> 5 -> 8 -> 5 -> 10
+// Output: 3 -> 2 -> 1 -> 5 -> 5 -> 8 -> 10
 
 var printList = function(a) {
   while (a !== null) {
