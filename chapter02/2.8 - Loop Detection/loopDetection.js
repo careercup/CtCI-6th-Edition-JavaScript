@@ -1,22 +1,27 @@
 var LinkedList = require('./../util/LinkedList');
 
 var loopDetection = (head) => {
-  var hare = head;
-  var tortoise = head;
-  while (hare !== null) {
-    tortoise = tortoise.next;
-    hare = hare.next;
-    if (hare === tortoise && hare !== head.next) {
-      return true;
-    }
-    if (hare !== null) {
-      hare = hare.next;
-      if (hare === tortoise) {
-        return true;
-      }
-    }
+  // The null checking code will handle lists with no loops.
+  if (!head || !head.next) return null
+  
+  var hare = head
+  var tortoise = head
+  
+  do {
+    hare = hare.next
+    tortoise = tortoise.next
+    if (!hare || !hare.next) return null
+    hare = hare.next
+  } while (hare !== tortoise)
+  
+  tortoise = head
+  
+  while (hare !== tortoise) {
+    hare = hare.next
+    tortoise = tortoise.next
   }
-  return false;
+  
+  return hare
 };
 
 /* TEST */
@@ -36,7 +41,7 @@ d.next = e;
 e.next = f;
 f.next = c;
 
-console.log(loopDetection(a), true);
+console.log(loopDetection(a) === c, true);
 
 var A = new LinkedList();
 var B = new LinkedList();
@@ -51,4 +56,4 @@ C.next = D;
 D.next = E;
 E.next = F;
 
-console.log(loopDetection(A), false);
+console.log(loopDetection(A) === null, false);
