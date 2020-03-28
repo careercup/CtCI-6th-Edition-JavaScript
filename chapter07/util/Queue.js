@@ -1,41 +1,36 @@
 // implement a queue using linkedLists
 var LinkedList = require('./LinkedList');
 
-var Queue = function() {
-  this.front = null;
-  this.back = null;
-};
-
-Queue.prototype.add = function(value) {
-  var node = new LinkedList(value);
-  if (this.front === null) {
-    this.front = node;
-    this.back = node;
-  } else {
-    var prevBack = this.back;
-    this.back = node;
-    prevBack.next = this.back;
+class Queue {
+  constructor() {
+    this._list = new LinkedList();
   }
-};
 
-Queue.prototype.remove = function() {
-  var removed = this.front;
-  if (this.front === this.back) {
-    this.front = null;
-    this.back = null;
-  } else {
-    this.front = this.front.next;
+  enqueue(value) {
+    this._list.append(value);
   }
-  return removed !== null ? removed.value : null;
-};
 
-Queue.prototype.peek = function() {
-  return this.front !== null ? this.front.value : null;
-};
+  dequeue() {
+    let node = this._list.popFirst();
+    return node.value;
+  }
 
-Queue.prototype.isEmpty = function() {
-  return this.front === null;
-};
+  peek() {
+    return this._list.head ? this._list.head.value : null;
+  }
+
+  isEmpty() {
+    return this._list.head == null;
+  }
+
+  _toArray() {
+    return this._list._toArray();
+  }
+}
+
+// alias
+Queue.prototype.add = Queue.prototype.enqueue;
+Queue.prototype.remove = Queue.prototype.dequeue;
 
 module.exports = Queue;
 
@@ -44,8 +39,10 @@ module.exports = Queue;
 // q.add('a');
 // q.add('b');
 // q.add('c');
+// console.log(q._toArray());
 // console.log(q.remove(), 'a');
 // console.log(q.peek(), 'b');
 // console.log(q.remove(), 'b');
 // console.log(q.remove(), 'c');
 // console.log(q.isEmpty(), true);
+// console.log(q._toArray());
