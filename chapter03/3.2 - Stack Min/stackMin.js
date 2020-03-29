@@ -1,43 +1,40 @@
 var Stack = require('./../util/Stack');
 
 // Approach, keep an additional stack that keeps the mins
-var stackMin = function() {
-  this.stack = new Stack();
-  this.minStack = new Stack();
-  this.currMin = undefined;
-};
 
-stackMin.prototype.push = function(value) {
-  if (this.currMin === undefined || value <= this.currMin) {
-    this.minStack.push(this.currMin);
-    this.currMin = value;
+class StackMin extends Stack {
+  constructor() {
+    super();
+    // additional stack to track the mins
+    this._minStack = new Stack();
+    this._min = null;
   }
-  this.stack.push(value);
-};
 
-stackMin.prototype.pop = function() {
-  var answer = this.stack.pop();
-  if (answer === this.currMin) {
-    this.currMin = this.minStack.pop();
+  push(value) {
+    super.push(value);
+    if (this._min == null || value <= this._min) {
+      this._min = value;
+      this._minStack.push(value);
+    }
   }
-  return answer;
-};
 
-stackMin.prototype.peek = function() {
-  return this.stack.peek();
-};
+  pop() {
+    let value = super.pop();
+    if (value == this._minStack.peek()) {
+      this._minStack.pop();
+      this._min = this._minStack.peek();
+    }
+    return value;
+  }
 
-stackMin.prototype.isEmpty = function() {
-  return this.stack.isEmpty();
-};
-
-stackMin.prototype.min = function() {
-  return this.currMin;
-};
+  min() {
+    return this._min;
+  }
+}
 
 /* TEST */
 
-var s = new stackMin();
+var s = new StackMin();
 s.push(9);
 s.push(8);
 s.push(1);
@@ -57,4 +54,4 @@ console.log(s.min(), 8);
 s.pop();
 s.pop();
 console.log(s.isEmpty(), true);
-console.log(s.min(), undefined);
+console.log(s.min(), null);
