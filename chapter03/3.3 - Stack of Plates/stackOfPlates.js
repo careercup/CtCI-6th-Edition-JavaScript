@@ -19,10 +19,12 @@ class SetOfStacks {
   pop() {
     if (this.numStack === 0) {
       return undefined;
-    } else if (this.stackSet[this.stackSet.length - 1].length === 0) {
+    }
+    let value = this.stackSet[this.stackSet.length - 1].pop();
+    if (this.stackSet[this.stackSet.length - 1].length === 0) {
       this.stackSet.pop();
-    } 
-    return this.stackSet[this.stackSet.length - 1].pop();
+    }
+    return value;
   }
 
   peek() {
