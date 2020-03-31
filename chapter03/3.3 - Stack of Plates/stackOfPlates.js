@@ -37,7 +37,14 @@ class SetOfStacks {
   }
 
   popAt(index) {
-    return this.stackSet[index].pop();
+    // out of range index
+    if (index < 0 || index >= this.stackSet.length) return false;
+    let value = this.stackSet[index].pop();
+    if (this.stackSet[index].length == 0) {
+      // clear the stack from the set
+      this.stackSet.splice(index, 1);
+    }
+    return value;
   }
 }
 
@@ -59,11 +66,13 @@ s.push(12);
 s.push(13);
 s.push(14);
 
-console.log(s.stackSet);
+console.log("stack set", s.stackSet);
 
 s.popAt(2);
+s.popAt(2);
+s.popAt(2);
 
-console.log(s.stackSet);
+console.log("stack set", s.stackSet);
 
 s.pop();
 s.pop();
@@ -76,7 +85,7 @@ s.pop();
 s.pop();
 s.pop();
 
-console.log(s.stackSet);
+console.log("stack set", s.stackSet);
 console.log(s.peek()); // 3
 
 
