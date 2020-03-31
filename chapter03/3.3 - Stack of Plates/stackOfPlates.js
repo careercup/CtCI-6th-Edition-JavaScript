@@ -1,4 +1,5 @@
 // implement as array of stacks
+const Stack = require("../util/Stack");
 
 class SetOfStacks {
   constructor(capacity) {
@@ -6,30 +7,36 @@ class SetOfStacks {
     this.stackSet = [];
   }
 
+  getLastStack() {
+    return this.stackSet[this.stackSet.length - 1];
+  }
+
   push(value) {
-    if (this.stackSet.length === 0  || this.stackSet[this.stackSet.length - 1].length === this.capacity) {
-      var newStack = [];
+    let last = this.getLastStack();
+    if (this.stackSet.length === 0  || last.size() === this.capacity) {
+      var newStack = new Stack();
       newStack.push(value);
       this.stackSet.push(newStack);
     } else {
-      this.stackSet[this.stackSet.length - 1].push(value);
+      last.push(value);
     }
   }
 
   pop() {
-    if (this.numStack === 0) {
+    if (this.stackSet.length === 0) {
       return undefined;
     }
-    let value = this.stackSet[this.stackSet.length - 1].pop();
-    if (this.stackSet[this.stackSet.length - 1].length === 0) {
+    let last = this.getLastStack();
+    let value = last.pop();
+    if (last.size() === 0) {
       this.stackSet.pop();
     }
     return value;
   }
 
   peek() {
-    var currStack = this.stackSet[this.stackSet.length - 1];
-    return currStack[currStack.length - 1];
+    let last = this.getLastStack();
+    return last.peek();
   }
 
   isEmpty() {
@@ -40,7 +47,7 @@ class SetOfStacks {
     // out of range index
     if (index < 0 || index >= this.stackSet.length) return false;
     let value = this.stackSet[index].pop();
-    if (this.stackSet[index].length == 0) {
+    if (this.stackSet[index].size() == 0) {
       // clear the stack from the set
       this.stackSet.splice(index, 1);
     }
@@ -66,13 +73,13 @@ s.push(12);
 s.push(13);
 s.push(14);
 
-console.log("stack set", s.stackSet);
+console.log(s.peek(), 14);
 
 s.popAt(2);
 s.popAt(2);
 s.popAt(2);
 
-console.log("stack set", s.stackSet);
+console.log(s.peek(), 14);
 
 s.pop();
 s.pop();
@@ -83,11 +90,5 @@ s.pop();
 s.pop();
 s.pop();
 s.pop();
-s.pop();
 
-console.log("stack set", s.stackSet);
-console.log(s.peek()); // 3
-
-
-// Note: if stack not implemented as an array, would need to separately keep track of the depth 
-// of each stack in an array
+console.log(s.peek(), 2);
