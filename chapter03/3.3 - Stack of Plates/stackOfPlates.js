@@ -1,40 +1,43 @@
-var SetOfStacks = function(capacity) {
-  // implement as an array of stacks
-  this.capacity = capacity;
-  this.stackSet = [];
-};
+// implement as array of stacks
 
-SetOfStacks.prototype.push = function(value) {
-  if (this.stackSet.length === 0  || this.stackSet[this.stackSet.length - 1].length === this.capacity) {
-    var newStack = [];
-    newStack.push(value);
-    this.stackSet.push(newStack);
-  } else {
-    this.stackSet[this.stackSet.length - 1].push(value);
+class SetOfStacks {
+  constructor(capacity) {
+    this.capacity = capacity;
+    this.stackSet = [];
   }
-};
 
-SetOfStacks.prototype.pop = function() {
-  if (this.numStack === 0) {
-    return undefined;
-  } else if (this.stackSet[this.stackSet.length - 1].length === 0) {
-    this.stackSet.pop();
-  } 
-  return this.stackSet[this.stackSet.length - 1].pop();
-};
+  push(value) {
+    if (this.stackSet.length === 0  || this.stackSet[this.stackSet.length - 1].length === this.capacity) {
+      var newStack = [];
+      newStack.push(value);
+      this.stackSet.push(newStack);
+    } else {
+      this.stackSet[this.stackSet.length - 1].push(value);
+    }
+  }
 
-SetOfStacks.prototype.peek = function() {
-  var currStack = this.stackSet[this.stackSet.length - 1];
-  return currStack[currStack.length - 1];
-};
+  pop() {
+    if (this.numStack === 0) {
+      return undefined;
+    } else if (this.stackSet[this.stackSet.length - 1].length === 0) {
+      this.stackSet.pop();
+    } 
+    return this.stackSet[this.stackSet.length - 1].pop();
+  }
 
-SetOfStacks.prototype.isEmpty = function() {
-  return this.stackSet.length === 0;
-};
+  peek() {
+    var currStack = this.stackSet[this.stackSet.length - 1];
+    return currStack[currStack.length - 1];
+  }
 
-SetOfStacks.prototype.popAt = function(index) {
-  return this.stackSet[index].pop();
-};
+  isEmpty() {
+    return this.stackSet.length === 0;
+  }
+
+  popAt(index) {
+    return this.stackSet[index].pop();
+  }
+}
 
 /* TESTS */
 
@@ -69,8 +72,10 @@ s.pop();
 s.pop();
 s.pop();
 s.pop();
+s.pop();
 
 console.log(s.stackSet);
+console.log(s.peek()); // 3
 
 
 // Note: if stack not implemented as an array, would need to separately keep track of the depth 
