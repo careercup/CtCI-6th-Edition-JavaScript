@@ -1,42 +1,41 @@
-var linkedList = function(value) {
-  this.value = value;
-  this.next = null;
-};
+const LinkedList = require("../util/LinkedListX");
 
-var findKthToLast = function(k, head) {
-  // do recursively
-  if (head === null || k < 1) {
-    return;
-  } else if (k === 1) {
-    console.log(head.value);
-    findKthToLast(k, head.next);
-  } else {
-    findKthToLast(k-1, head.next);
+var findKthToLast = function(k, list) {
+  // do iteratively
+  //define two pointers , fast and slow pointer
+  let fast = list.head
+  let slow = list.head
+
+  //Move fast pointer k steps in the linkedlist while slow remains at head
+  for(let i=0;i<k;i++){
+    if(fast === null) return null //k is larger than length of linked list
+    fast = fast.next
   }
+  // move both pointers at the same time, slow pointer will exit at kth node from the end
+  while(fast !== null){
+    fast =fast.next
+    slow=slow.next
+
+  }
+  return slow
+
 };
-
 /* TESTS */
-var a = new linkedList('1');
-var b = new linkedList('2');
-var c = new linkedList('3');
-var d = new linkedList('4');
-var e = new linkedList('5');
-var f = new linkedList('6');
-var g = new linkedList('7');
+let l = new LinkedList();
+l.append(1)
+l.append(2)
+l.append(3)
+l.append(4)
+l.append(5)
 
-a.next = b;
-b.next = c;
-c.next = d;
-d.next = e;
-e.next = f;
-f.next = g;
 
-findKthToLast(3, a);
 
-findKthToLast(10, a);
+console.log(findKthToLast(3, l));
 
-findKthToLast(-1, a);
+console.log(findKthToLast(10, l));
 
-findKthToLast(0, a);
+console.log(findKthToLast(-1, l));
 
-findKthToLast(1, a);
+console.log(findKthToLast(0, l));
+
+console.log(findKthToLast(1, l));
