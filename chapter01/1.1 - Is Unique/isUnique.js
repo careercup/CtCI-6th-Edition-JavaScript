@@ -23,18 +23,13 @@ const everyCharUnique = (str, indexOffset = 'a'.charCodeAt()) => {
     return true;
 };
 
-function uniqueCharacter(str) {
+function everyCharUnique(str) {
   let obj = {};
   for (let i = 0; i < str.length; i++) {
-    if (obj[str[i]]) {
-      obj[str[i]] += 1;
+    if (obj[str[i]] && obj[str[i]] >= 1) {
+      return false;
     } else {
       obj[str[i]] = 1;
-    }
-  }
-  for (const property in obj) {
-    if (obj[property] > 1) {
-      return false;
     }
   }
   return true;
