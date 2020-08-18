@@ -12,7 +12,7 @@ var AnimalShelter = function() {
 AnimalShelter.prototype.enqueue = function(animal) {
   if (animal.type === 'dog') {
     this.dogQ.enqueue(animal);
-  } else if (animal.type === 'vat') {
+  } else if (animal.type === 'cat') {
     this.catQ.enqueue(animal);
   }
   this.allQ.enqueue(animal);
