@@ -1,40 +1,59 @@
-var SetOfStacks = function(capacity) {
-  // implement as an array of stacks
-  this.capacity = capacity;
-  this.stackSet = [];
-};
+// implement as array of stacks
+const Stack = require("../util/Stack");
 
-SetOfStacks.prototype.push = function(value) {
-  if (this.stackSet.length === 0  || this.stackSet[this.stackSet.length - 1].length === this.capacity) {
-    var newStack = [];
-    newStack.push(value);
-    this.stackSet.push(newStack);
-  } else {
-    this.stackSet[this.stackSet.length - 1].push(value);
+class SetOfStacks {
+  constructor(capacity) {
+    this.capacity = capacity;
+    this.stackSet = [];
   }
-};
 
-SetOfStacks.prototype.pop = function() {
-  if (this.numStack === 0) {
-    return undefined;
-  } else if (this.stackSet[this.stackSet.length - 1].length === 0) {
-    this.stackSet.pop();
-  } 
-  return this.stackSet[this.stackSet.length - 1].pop();
-};
+  getLastStack() {
+    return this.stackSet[this.stackSet.length - 1];
+  }
 
-SetOfStacks.prototype.peek = function() {
-  var currStack = this.stackSet[this.stackSet.length - 1];
-  return currStack[currStack.length - 1];
-};
+  push(value) {
+    let last = this.getLastStack();
+    if (this.stackSet.length === 0  || last.size() === this.capacity) {
+      var newStack = new Stack();
+      newStack.push(value);
+      this.stackSet.push(newStack);
+    } else {
+      last.push(value);
+    }
+  }
 
-SetOfStacks.prototype.isEmpty = function() {
-  return this.stackSet.length === 0;
-};
+  pop() {
+    if (this.stackSet.length === 0) {
+      return undefined;
+    }
+    let last = this.getLastStack();
+    let value = last.pop();
+    if (last.size() === 0) {
+      this.stackSet.pop();
+    }
+    return value;
+  }
 
-SetOfStacks.prototype.popAt = function(index) {
-  return this.stackSet[index].pop();
-};
+  peek() {
+    let last = this.getLastStack();
+    return last.peek();
+  }
+
+  isEmpty() {
+    return this.stackSet.length === 0;
+  }
+
+  popAt(index) {
+    // out of range index
+    if (index < 0 || index >= this.stackSet.length) return false;
+    let value = this.stackSet[index].pop();
+    if (this.stackSet[index].size() == 0) {
+      // clear the stack from the set
+      this.stackSet.splice(index, 1);
+    }
+    return value;
+  }
+}
 
 /* TESTS */
 
@@ -54,11 +73,13 @@ s.push(12);
 s.push(13);
 s.push(14);
 
-console.log(s.stackSet);
+console.log(s.peek(), 14);
 
 s.popAt(2);
+s.popAt(2);
+s.popAt(2);
 
-console.log(s.stackSet);
+console.log(s.peek(), 14);
 
 s.pop();
 s.pop();
@@ -70,8 +91,4 @@ s.pop();
 s.pop();
 s.pop();
 
-console.log(s.stackSet);
-
-
-// Note: if stack not implemented as an array, would need to separately keep track of the depth 
-// of each stack in an array
+console.log(s.peek(), 2);

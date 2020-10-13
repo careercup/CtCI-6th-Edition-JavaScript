@@ -1,47 +1,49 @@
 var Stack = require('./../util/Stack');
 
-var myQueue = function() {
-  this.front = new Stack();
-  this.back = new Stack();
-  this.backUp = true;
-};
-
-myQueue.prototype.add = function(value) {
-  if (!this.backUp) {
-    while (!this.front.isEmpty()) {
-      this.back.push(this.front.pop());
-    }
+class MyQueue {
+  constructor() {
+    this.front = new Stack();
+    this.back = new Stack();
     this.backUp = true;
   }
-  this.back.push(value);
-};
 
-myQueue.prototype.remove = function() {
-  if (this.backUp) {
-    while(!this.back.isEmpty()) {
-      this.front.push(this.back.pop());
+  add(value) {
+    if (!this.backUp) {
+      while (!this.front.isEmpty()) {
+        this.back.push(this.front.pop());
+      }
+      this.backUp = true;
     }
-    this.backUp = false;
+    this.back.push(value);
   }
-  return this.front.pop();
-};
 
-myQueue.prototype.peek = function() {
-  if (this.backUp) {
-    while(!this.back.isEmpty()) {
-      this.front.push(this.back.pop());
+  remove() {
+    if (this.backUp) {
+      while(!this.back.isEmpty()) {
+        this.front.push(this.back.pop());
+      }
+      this.backUp = false;
     }
-    this.backUp = false;
+    return this.front.pop();
   }
-  return this.front.peek();
-};
 
-myQueue.prototype.isEmpty = function() {
-  return this.front.isEmpty() && this.back.isEmpty();
-};
+  peek() {
+    if (this.backUp) {
+      while(!this.back.isEmpty()) {
+        this.front.push(this.back.pop());
+      }
+      this.backUp = false;
+    }
+    return this.front.peek();
+  }
+
+  isEmpty() {
+    return this.front.isEmpty() && this.back.isEmpty();
+  }
+}
 
 /* TEST */
-var m = new myQueue();
+var m = new MyQueue();
 console.log(m.isEmpty(), true);
 
 m.add('a');

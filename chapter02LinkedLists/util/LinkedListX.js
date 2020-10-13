@@ -1,4 +1,17 @@
-// moved from chapter 2 (/util/LinkedListX.js)
+// a new implementation of the linked list
+/*
+ADT:
+# Main operations
+prepend(value)        -> Add a node in the beginning
+append(value)         -> Add a node in the end
+pop()                 -> Remove a node from the end
+popFirst()            -> Remove a node from the beginning
+head()                -> Return the first node
+tail()                -> Return the last node
+remove(Node)*         -> Remove Node from the list
+*/
+
+// NOTE: no type-safety
 
 class Node {
     constructor(value) {

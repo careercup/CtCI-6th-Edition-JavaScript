@@ -1,31 +1,44 @@
-// implement a stack using linkedLists
-var LinkedList = require('./LinkedList');
+// simple implementation of a stack 
+// using an Array
 
-var Stack = function() {
-  this.top = null;
-};
-
-Stack.prototype.push = function(value) {
-  var node = new LinkedList(value);
-  node.next = this.top;
-  this.top = node;
-};
-
-Stack.prototype.pop = function() {
-  var popped = this.top;
-  if (this.top !== null) {
-    this.top = this.top.next;
+/*
+Interface:
+- push(value)
+- pop()
+- peek()
+- isEmpty()
+- size()
+*/
+class Stack {
+  constructor() {
+    this._data = [];
   }
-  return popped.value;
-};
 
-Stack.prototype.peek = function() {
-  return this.top !== null ? this.top.value : null;
-};
+  size() {
+    return this._data.length;
+  }
 
-Stack.prototype.isEmpty = function() {
-  return this.top === null;
-};
+  isEmpty() {
+    return this.size() == 0;
+  }
+
+  push(value) {
+    this._data.push(value);
+  }
+
+  pop() {
+    return this._data.pop();
+  }
+
+  peek() {
+    if (this.isEmpty()) return null;
+    return this._data[this.size() - 1];
+  }
+
+  _toArray() {
+    return this._data;
+  }
+}
 
 module.exports = Stack;
 
