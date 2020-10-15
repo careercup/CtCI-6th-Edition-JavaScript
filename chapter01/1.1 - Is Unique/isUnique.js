@@ -35,6 +35,13 @@ function everyCharUnique(str) {
   return true;
 }
 
+const everyCharUnique = (str)=>{
+  // create a set from str which will store only unique occurences of characters
+  //then compare the length of str and set, if same return true, else false
+  let set = new Set([...str])
+  return str.length ===  set.size
+}
+
 /* TESTS */
 console.log(everyCharUnique('abcd'), 'true');
 console.log(everyCharUnique('abccd'), 'false');
