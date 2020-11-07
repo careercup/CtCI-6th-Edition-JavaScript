@@ -6,7 +6,6 @@ Recursion and Dynamic Programming (4 steps)
 4. Apply final tricks to reduce the time / memory complexity
 */
 
-/*
 // Recursive BackTracking 
 // Time & Space O(n!)
 var tripleStep = function(n, res=0) {
@@ -38,7 +37,6 @@ var tripleStep = function(n, memo=[1,1,2,4]) {
 
   return memo[memo.length - 1]
 }
-*/
 
 // Removed Memoization
 // Time O(n) & Space O(1)
