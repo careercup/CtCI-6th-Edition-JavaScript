@@ -1,3 +1,12 @@
+/*
+Recursion and Dynamic Programming (4 steps)
+1. Start with the recursive backtracking solution (Brute Force)
+2. Optimize by using a memoization table (top-down dynamic programming)
+3. Remove the need for recursion (bottom-up dynamic programming)
+4. Apply final tricks to reduce the time / memory complexity
+*/
+
+/*
 // Recursive BackTracking 
 // Time & Space O(n!)
 var tripleStep = function(n, res=0) {
@@ -28,6 +37,27 @@ var tripleStep = function(n, memo=[1,1,2,4]) {
   }
 
   return memo[memo.length - 1]
+}
+*/
+
+// Removed Memoization
+// Time O(n) & Space O(1)
+var tripleStep = function(n) {
+  if (n <= 0) return 0
+  if (n === 1) return 1
+  if (n === 2) return 2
+
+  let a = 1
+  let b = 1
+  let c = 2
+
+  for (let i = 3; i < n; i++) {
+    let d = a + b + c
+    a = b
+    b = c
+    c = d
+  }
+  return a + b + c
 }
 
 /* TEST */
