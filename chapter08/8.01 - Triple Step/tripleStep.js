@@ -10,10 +10,7 @@ Recursion and Dynamic Programming (4 steps)
 // Time & Space O(n!)
 var tripleStep = function(n, res=0) {
   if (n < 0) return 0
-  if (n === 0)  {
-    res++
-    return res
-  }
+  if (n === 0)  return 1 
   return tripleStep(n - 1) + tripleStep(n - 2) + tripleStep(n - 3)
 }
 
@@ -30,7 +27,6 @@ var tripleStep = function(n, i=3, memo = [1, 1, 2, 4]) {
 // Bottom Up memoization
 // Time & Space O(n) 
 var tripleStep = function(n, memo=[1,1,2,4]) {
-
   for (let i = 3; i <= n; i++) {
     memo[i] = memo[i - 1] + memo[i - 2] + memo[i - 3]
   }
