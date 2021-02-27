@@ -1,14 +1,11 @@
-var insertion = function(N, M, i, j) {
-  var n = N.split('');
-  var m = M.split('');
-  var nlength = n.length - 1;
-  var mlength = m.length - 1;
-  for (var a = 0; a < j - i + 1; a++) {
-    console.log(m[mlength - a]);
-    n[nlength - (i + a)] = m[mlength - a];
-  }
-  return n.join('');
+const insertion = (N, M, i, j) => {
+  const bitMask = (-1 << (j + 1)) | ((1 << i) - 1);
+  const clearedN = N & bitMask;
+  const shiftedM = M << i;
+  return clearedN | shiftedM;
 };
 
 /* TEST */
-console.log(insertion('10000000000', '10011', 2, 6), '10001001100');
+const N = parseInt(10000000000, 2);
+const M = parseInt(10011, 2);
+console.log(insertion(M, N, 2, 6).toString(2), 10001001100);
