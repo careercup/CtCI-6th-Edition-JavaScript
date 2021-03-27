@@ -62,3 +62,19 @@ console.log(oneAway('pale', 'ple'), true);
 console.log(oneAway('pales', 'pale'), true);
 console.log(oneAway('pale', 'bale'), true);
 console.log(oneAway('pale', 'bake'), false);
+
+
+//Another solution 
+function oneAway(str1, str2) {
+  var counter = 0;
+  for (var i = 0; i < str1.length; i++) {
+    if (!str2.includes(str1.charAt(i))) {
+      counter++;
+    }
+  };
+  
+  if (counter > 1) {
+    return false;
+  }
+  return true;
+}

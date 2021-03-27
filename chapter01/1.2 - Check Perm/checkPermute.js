@@ -17,3 +17,18 @@ console.log(checkPermute('aba', 'aab'), true);
 console.log(checkPermute('aba', 'aaba'), false);
 
 console.log(checkPermute('aba', 'aa'), false);
+
+//ANOTHER SOLUTION
+
+function permutation(str1, str2) {
+  if (str1.length !== str2.length) {
+    return false;
+  }
+
+  for (var i = 0; i < str1.length; i++) {
+    if (!str2.includes(str1.charAt(i))) {
+      return false;
+    }
+  };
+  return true;
+}
