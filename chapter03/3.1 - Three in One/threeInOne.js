@@ -44,12 +44,12 @@ ThreeInOne.prototype.pop2 = function() {
   return answer;
 };
 
-ThreeInOne.prototype.pop3 = function(value) {
+ThreeInOne.prototype.pop3 = function() {
   if (this.isEmpty3()) {
     return undefined;
   }
 
-  return this.container.pop(value);
+  return this.container.pop();
 };
 
 ThreeInOne.prototype.peek1 = function() {
