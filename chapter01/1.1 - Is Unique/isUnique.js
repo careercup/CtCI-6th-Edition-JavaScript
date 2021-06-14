@@ -35,8 +35,20 @@ function everyCharUnique(str) {
   return true;
 }
 
+function everyCharUniqueV2(str){
+  //Only needs to run through the array once
+  for (let i = 0, len = str.length; i < len; i++){
+    if (i !== str.lastIndexOf(str.charAt(i))){
+      return false;
+    }
+  }
+  return true;
+}
+
 /* TESTS */
 console.log(everyCharUnique('abcd'), 'true');
 console.log(everyCharUnique('abccd'), 'false');
 console.log(everyCharUnique('bhjjb'), 'false');
 console.log(everyCharUnique('mdjq'), 'true');
+console.log(everyCharUniqueV2('test'), 'false');
+console.log(everyCharUniqueV2('tes'), 'true');
