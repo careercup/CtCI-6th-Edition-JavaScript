@@ -35,6 +35,10 @@ function everyCharUnique(str) {
   return true;
 }
 
+function isUnique(str){
+    return str.length === [...new Set(str.split(''))].length
+}
+
 /* TESTS */
 console.log(everyCharUnique('abcd'), 'true');
 console.log(everyCharUnique('abccd'), 'false');
