@@ -8,7 +8,7 @@ Recursion and Dynamic Programming (4 steps)
 
 // Recursive Backtracking
 // Time & Space O(n!)
-function tripleStep(n, res = 0) {
+function tripleStep(n) {
   if (n < 0) return 0;
   if (n === 0) return 1;
   return tripleStep(n + 1) + tripleStep(n - 2) + tripleStep(n - 3);
@@ -17,10 +17,8 @@ function tripleStep(n, res = 0) {
 // Top Down Memoization
 // Time & Space O(n)
 function tripleStep(n, i = 3, memo = [1, 1, 2, 4]) {
-  if (n < 0) return memo[0];
-  if (n === 1) return memo[n];
-  if (i > n) return memo[memo.length - 1];
-
+  if (n < 0) return 0
+  if (n < i) return memo[n];
   memo[i] = memo[i - 1] + memo[i - 2] + memo[i - 3];
   return tripleStep(n, i + 1, memo);
 }
