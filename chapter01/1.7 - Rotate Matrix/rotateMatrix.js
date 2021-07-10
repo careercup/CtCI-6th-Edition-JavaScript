@@ -1,108 +1,52 @@
-var rotateMatrix = function(matrix) {
-  var edge = matrix.length - 1;
+function rotate(pic) {
+	let rotatePic = [];
+	
+	for (let i=0; i<pic.length; i++) {
+		for (let j=0; j<pic.length; j++) {
+			if (!rotatePic[j]) {
+				rotatePic[j] = [];
+			}
+			rotatePic[j][(pic[i].length-1)-i] = pic[i][j];
+		}
+	}
+	printPic(pic);
+	printPic(rotatePic);
+	
+	return rotatePic;
+}
 
-  var movePixels = function(row, col) {
-    // starts at m[row][col]
-    // moves to m[col][edge - row]
-    var fromRow;
-    var fromCol;
-    var fromPixel;
+function printPic(pic) {
+	console.log('###')
+	for (let i=0; i<pic.length; i++) {
+		console.log(pic[i].join(''));
+	}
+	console.log('###')
+}
 
-    // first transformation
-    var toRow = row; // 0
-    var toCol = col; // 1
-    var toPixel = matrix[row][col];
+function areEqual(arr1, arr2) {
+	if (arr1.length !== arr2.length) {
+		return false;
+	}
+	
+	for (let i=0; i<arr1.length; i++) {
+		if (arr1[i].length !== arr2[i].length) {
+			return false;
+		}
+		for (let j=0; j<arr1.length; j++) {
+			if (arr1[i][j] !== arr2[i][j]) {
+				return false;
+			}
+		}
+	}
+	
+	return true;
+}
 
-    // Do rotational transformation 4 times
-    for (var i = 0; i < 4; i++) {
-      fromRow = toRow;
-      fromCol = toCol;
-      toRow = fromCol;
-      toCol = edge - fromRow;
-
-      fromPixel = toPixel;
-      toPixel = matrix[toRow][toCol];
-      matrix[toRow][toCol] = fromPixel;
-    }
-  };
-
-  for (var i = 0; i < matrix.length / 2; i++) {
-    for (var j = i; j < edge - i; j++) {
-      console.log(i, j);
-      movePixels(i, j);
-    }
-  }
-};
-
-
-/* TEST */
-var testMatrix = [
-[1, 2, 3, 4],
-[0, 1, 2, 3],
-[0, 0, 1, 2],
-[1, 0, 0, 1]
-];
-
-console.log('before:');
-console.log(testMatrix[0]);
-console.log(testMatrix[1]);
-console.log(testMatrix[2]);
-console.log(testMatrix[3]);
-
-rotateMatrix(testMatrix);
-
-console.log('after:');
-console.log(testMatrix[0]);
-console.log(testMatrix[1]);
-console.log(testMatrix[2]);
-console.log(testMatrix[3]);
-
-/*
-var edge = n - 1;
-
-pattern observed:
-i) col value becomes row value
-ii) row value is subtracted off edge and becomes col value
-
-0100
-0000
-0000
-0000
-
-position of 1 -> m[0][1]
-
-0000
-0001
-0000
-0000
-
-position of 1 -> m[1][edge]
-
-0000
-0000
-0000
-0010
-
-position of 1 -> m[edge][edge - 1]
-
-0000
-0000
-1000
-0000
-
-position of 1 -> m[edge-1][0]
-
-0100
-0000
-0000
-0000
-
-position of 1 -> m[0][1]
-
-flow of iteration:
-i) start from top left corner and move diagonally down
-ii) for each row, iterate pixels until edge - 1 
-(pixel at edge would have been transformed by the first pixel)
-iii) at each pixel iteration, iterate through 4 sides
-iv) do iteration in place, i.e. store a temp pixel for moving things around
-*/
+console.log(areEqual(
+					rotate([[1,1,1,1],[2,2,2,2],[3,3,3,3],[4,4,4,4]]), 
+					[[4,3,2,1],[4,3,2,1],[4,3,2,1],[4,3,2,1]])
+			);
+console.log(areEqual(
+					rotate([[8,0,1,0],[1,2,2,6],[9,7,3,3],[9,1,4,9]]), 
+					[[9,9,1,8],[1,7,2,0],[4,3,2,1],[9,3,6,0]])
+			);
