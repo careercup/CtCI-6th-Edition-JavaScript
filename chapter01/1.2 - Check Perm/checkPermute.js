@@ -29,7 +29,6 @@ console.log(checkPermuteOneLine('aba', 'baa'), true);
 console.log(checkPermuteOneLine('aba', 'aa'), false);
 
 // HashMap Solution
-
 isPermutation = (a, b) => {
 
     if (a.length !== b.length) return false;
