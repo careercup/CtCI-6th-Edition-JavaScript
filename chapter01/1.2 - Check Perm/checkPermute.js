@@ -48,6 +48,7 @@ isPermutation = (a, b) => {
     return true;
 }
 
+// Tests
 console.log(isPermutation("damla", "almad"), true);
 console.log(isPermutation("damla", "dmla"), false);
 console.log(isPermutation("damla", "daala"), false);
