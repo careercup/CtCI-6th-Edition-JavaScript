@@ -17,3 +17,11 @@ console.log(checkPermute('aba', 'aab'), true);
 console.log(checkPermute('aba', 'aaba'), false);
 
 console.log(checkPermute('aba', 'aa'), false);
+
+// Same function as a one line solution
+
+checkPermuteOneLine = (a, b) => {
+    return (a.length === b.length && (a.split("").sort().join("") === b.split("").sort().join("")))
+}
+
+console.log(checkPermuteOneLine('aba', 'baa'));
