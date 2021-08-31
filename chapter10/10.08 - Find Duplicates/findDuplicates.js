@@ -5,6 +5,9 @@
 // The Int8Array typed array represents an array of twos-complement 8-bit signed integers.
 // 4 KB > 32,000 bits
 
+// Time Complexity - O(n)
+// Space Complexity - O(n)
+
 // Let's have a JavaScript Solution of this program:
 
 function FindDuplicates(arr, range = 32000) {
