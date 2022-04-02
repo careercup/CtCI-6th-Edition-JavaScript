@@ -111,7 +111,6 @@ class Table {
   }
 }
 
-
 /* TEST */
 var table = new Table();
 var eugene = new Player("eugene");
