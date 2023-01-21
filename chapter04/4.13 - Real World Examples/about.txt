@@ -1,0 +1,9 @@
+In-order, pre-order, and post-order traversal are all methods of traversing a binary tree, but they differ in the order in which they visit the nodes.
+
+In-order traversal visits the left subtree first, then the current node, and finally the right subtree. This order is useful for sorting elements in a binary search tree, as it visits the nodes in a sorted order.
+
+Pre-order traversal visits the current node first, then the left subtree, and finally the right subtree. This order is useful for representing a file system hierarchy, where the parent node is visited before its children.
+
+Post-order traversal visits the left subtree first, then the right subtree, and finally the current node. This order is useful for deleting a tree or a subtree efficiently.
+
+In summary, In-order traversal visits left subtree first, then root and then right subtree. Pre-order traversal visits root first, then left subtree and then right subtree. Post-order traversal visits left subtree first, then right subtree and then root.
