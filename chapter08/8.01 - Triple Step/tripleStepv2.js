@@ -11,7 +11,7 @@ Recursion and Dynamic Programming (4 steps)
 function tripleStep(n) {
   if (n < 0) return 0;
   if (n === 0) return 1;
-  return tripleStep(n + 1) + tripleStep(n - 2) + tripleStep(n - 3);
+  return tripleStep(n - 1) + tripleStep(n - 2) + tripleStep(n - 3);
 }
 
 // Top Down Memoization
