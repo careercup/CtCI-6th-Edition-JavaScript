@@ -1,6 +1,7 @@
 const LinkedList = require('./../util/LinkedList')
 const printList = require('./../util/printList')
 
+
 function sumLinkedListsForward(list1, list2) {
   if (!list1 && !list2) {
     return null
