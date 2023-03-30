@@ -1,25 +1,28 @@
-var strComp = function(string) {
-  var compressed = '';
-  var currChar = '';
-  var currCount = '';
-  var maxCount = 1;
-  for (var i = 0; i < string.length; i++) {
-    if (currChar !== string[i]) {
-      console.log(currChar, string[i], i);
-      compressed = compressed + currChar + currCount;
-      maxCount = Math.max(maxCount, currCount);
-      currChar = string[i];
-      currCount = 1;
+const stringCompression = (string) => {
+  let compressed = '';
+  let currentCharacter = '';
+  let currentCount = '';
+  let maxCount = 1;
+  for(var i = 0; i < string.length; i++) {
+    if(currentCharacter !== string[i]) {
+      compressed = compressed + currentCharacter + currentCount;
+      maxCount = Math.max(maxCount, currentCount);
+      currentCharacter = string[i];
+      currentCount = 1;
     } else {
-      currCount++;
+      currentCount++;
     }
   }
-  compressed = compressed + currChar + currCount;
-  maxCount = Math.max(maxCount, currCount);
-
+  
+  compressed = compressed + currentCharacter + currentCount;
+  maxCount = Math.max(maxCount, currentCount);
+  
+  if(string.length < compressed.length) {
+    return string;
+  }
+  
   return maxCount === 1 ? string : compressed;
-};
+}
 
-// Test
-console.log('aaaaaa', strComp('aaaaaa'), 'a6');
-console.log('aabcccccaaa', strComp('aabcccccaaa'), 'a2b1c5a3');
+console.log('aaaaaa', stringCompression('aabcdef')); // aabcdef
+console.log('aaaaaa', stringCompression('aabbcc')); // a2b2c2
