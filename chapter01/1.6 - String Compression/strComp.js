@@ -1,23 +1,35 @@
 var strComp = function(string) {
-  var compressed = '';
-  var currChar = '';
-  var currCount = '';
-  var maxCount = 1;
+  if (!string || string === '') {
+    return string;
+  }
+
+  // O(S) time where S is length of string;
+  // O(S) space, for array will go up to S when string has no consecutive chars
+
+  var compressed = [];
+  var currChar;
+  var compressedChar;
+  var compressedCount;
   for (var i = 0; i < string.length; i++) {
-    if (currChar !== string[i]) {
-      console.log(currChar, string[i], i);
-      compressed = compressed + currChar + currCount;
-      maxCount = Math.max(maxCount, currCount);
-      currChar = string[i];
-      currCount = 1;
+    currChar = string.charAt(i);
+    if (!compressedChar) {
+      compressedChar = currChar;
+      compressedCount = 1;
+    } else if (compressedChar === currChar) {
+      compressedCount++;
     } else {
-      currCount++;
+      compressed.push([compressedChar, compressedCount]);
+      compressedChar = currChar;
+      compressedCount = 1;
     }
   }
-  compressed = compressed + currChar + currCount;
-  maxCount = Math.max(maxCount, currCount);
+  compressed.push([compressedChar, compressedCount]);
 
-  return maxCount === 1 ? string : compressed;
+  var answer = compressed.reduce(function(unit) {
+    return unit + unit[0] + unit[1];
+  }, '');
+
+  return answer.length < string.length ? answer : string;
 };
 
 // Test
