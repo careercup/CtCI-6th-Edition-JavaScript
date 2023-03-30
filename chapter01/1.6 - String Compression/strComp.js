@@ -23,3 +23,24 @@ var strComp = function(string) {
 // Test
 console.log('aaaaaa', strComp('aaaaaa'), 'a6');
 console.log('aabcccccaaa', strComp('aabcccccaaa'), 'a2b1c5a3');
+
+//Another solution 
+
+function compression(str) {
+  var counter = 1;
+  var result = '';
+  for (var i = 0; i < str.length; i++) {
+    if (str.charAt(i) === str.charAt(i + 1)) {
+      counter+=1;
+    } else {
+      result += str.charAt(i) + counter.toString();
+      counter = 1;
+    }
+  }
+
+  if (result.length < str.length ) {
+    return result;
+  } else {
+    return str;
+  } 
+}
