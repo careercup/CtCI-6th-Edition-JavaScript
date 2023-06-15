@@ -26,7 +26,7 @@ const everyCharUnique = (str, indexOffset = 'a'.charCodeAt()) => {
 function everyCharUnique(str) {
   let obj = {};
   for (let i = 0; i < str.length; i++) {
-    if (obj[str[i]] && obj[str[i]] >= 1) {
+    if (obj[str[i]]) {
       return false;
     } else {
       obj[str[i]] = 1;
