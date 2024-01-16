@@ -1,94 +1,59 @@
-// implement as array of stacks
-const Stack = require("../util/Stack");
-
-class SetOfStacks {
-  constructor(capacity) {
-    this.capacity = capacity;
-    this.stackSet = [];
+class StackOfPlates {
+  constructor(size) {
+      this.size = size;
+      this.stacks = [[]];
   }
 
-  getLastStack() {
-    return this.stackSet[this.stackSet.length - 1];
+  push(val) {
+      let lastStack = this.stacks.at(-1);
+      if (this.stacks.length === 0 || lastStack.length >= this.size) {
+          this.stacks.push([val]);
+      } else {
+          lastStack.push(val);
+      }
   }
-
-  push(value) {
-    let last = this.getLastStack();
-    if (this.stackSet.length === 0  || last.size() === this.capacity) {
-      var newStack = new Stack();
-      newStack.push(value);
-      this.stackSet.push(newStack);
-    } else {
-      last.push(value);
-    }
-  }
-
   pop() {
-    if (this.stackSet.length === 0) {
-      return undefined;
-    }
-    let last = this.getLastStack();
-    let value = last.pop();
-    if (last.size() === 0) {
-      this.stackSet.pop();
-    }
-    return value;
-  }
-
-  peek() {
-    let last = this.getLastStack();
-    return last.peek();
-  }
-
-  isEmpty() {
-    return this.stackSet.length === 0;
+      let lastStack = this.stacks.at(-1);
+      let ele = lastStack.pop();
+      if (lastStack.length === 0) {
+          this.stacks.pop();
+      }
+      return ele;
   }
 
   popAt(index) {
-    // out of range index
-    if (index < 0 || index >= this.stackSet.length) return false;
-    let value = this.stackSet[index].pop();
-    if (this.stackSet[index].size() == 0) {
-      // clear the stack from the set
-      this.stackSet.splice(index, 1);
-    }
-    return value;
+      let stack = this.stacks.at(index);
+      if (stack == null) return -1;
+      let ele = stack.pop();
+      if (stack?.length === 0) {
+          this.stacks.splice(index, 1);
+      }
+      return ele;
+  }
+
+  peek() {
+      let lastStack = this.stacks.at(-1);
+      return lastStack?.at(-1);
   }
 }
 
-/* TESTS */
-
-var s = new SetOfStacks(3);
-s.push(1);
-s.push(2);
-s.push(3);
-s.push(4);
-s.push(5);
-s.push(6);
-s.push(7);
-s.push(8);
-s.push(9);
-s.push(10);
-s.push(11);
-s.push(12);
-s.push(13);
-s.push(14);
-
-console.log(s.peek(), 14);
-
-s.popAt(2);
-s.popAt(2);
-s.popAt(2);
-
-console.log(s.peek(), 14);
-
-s.pop();
-s.pop();
-s.pop();
-s.pop();
-s.pop();
-s.pop();
-s.pop();
-s.pop();
-s.pop();
-
-console.log(s.peek(), 2);
+let plates = new StackOfPlates(3);
+plates.push(1);
+plates.push(2);
+plates.push(3);
+plates.push(4);
+plates.push(5);
+plates.push(6);
+plates.push(7);
+plates.push(8);
+plates.push(9);
+plates.push(10);
+plates.push(11);
+plates.pop();
+plates.pop();
+plates.pop();
+plates.popAt(0);
+plates.popAt(0);
+plates.popAt(0);
+plates.popAt(0);
+console.log(plates);
