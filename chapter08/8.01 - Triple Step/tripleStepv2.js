@@ -36,9 +36,7 @@ function tripleStep(n, memo = [1, 1, 2, 4]) {
 // Constant Space
 // Time O(n) & Space O(1)
 function tripleStep(n) {
-  if (n <= 0) return 0;
-  if (n === 1) return 1;
-  if (n === 2) return 2;
+  if (n <= 2) return n;
 
   let a = 1;
   let b = 1;
